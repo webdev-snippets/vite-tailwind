@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import useApi from "@/hooks/useApi";
 import { Status } from "@/types/backend";
+import { NavDrawer } from "./components/navDrawer";
+import { Button } from "./components/button";
+
+const items = [
+    { label: "Home", route: "/" },
+    { label: "Profile", route: "/profile" },
+    { label: "Settings", route: "/settings" },
+  ] 
 
 export default function App() {
     const [response, setResponse] = useState<Status>({status: 'help'})
@@ -20,6 +28,9 @@ export default function App() {
     }, [api]);
     return(
         <div className="bg-primary">
+            <NavDrawer items={items} pathname="/">
+                <Button label="hello" />
+            </NavDrawer>
             hello
             {response?.status}
         </div>

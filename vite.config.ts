@@ -15,6 +15,8 @@ export default defineConfig({
     extensions: ['.tsx', '.mjs', '.cjs', '.js'],
   },
   test:{
-    globals: true
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './vitest-setup.ts'
   }
 })
