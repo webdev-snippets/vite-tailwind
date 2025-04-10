@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+
+
+@import "@fontsource-variable/roboto-flex";
+
+body {
+  font-family: "Roboto Flex Variable", sans-serif;
+  font-weight: 500;
+  font-variation-settings: "wdth" 75, "wght" 500;
+}
+
+@theme {
+    --color-primary: #68548E;
+    --color-surface-tint: #68548E;
+    --color-on-primary: #FFFFFF;
+    --color-primary-container: #EBDDFF;
+    --color-on-primary-container: #230F46;
+    --color-secondary: #635B70;
+    --color-on-secondary: #FFFFFF;
+    --color-secondary-container: #E9DEF8;
+    --color-on-secondary-container: #1F182B;
+    --color-tertiary: #7E525D;
+    --color-on-tertiary: #FFFFFF;
+    --color-tertiary-container: #FFD9E1;
+    --color-on-tertiary-container: #31101B;
+    --color-error: #BA1A1A;
+    --color-on-error: #FFFFFF;
+    --color-error-container: #FFDAD6;
+    --color-on-error-container: #410002;
+    --color-background: #FEF7FF;
+    --color-on-background: #1D1B20;
+    --color-surface: #FEF7FF;
+    --color-on-surface: #1D1B20;
+    --color-surface-variant: #E7E0EB;
+    --color-on-surface-variant: #49454E;
+    --color-outline: #7A757F;
+    --color-outline-variant: #CBC4CF;
+    --color-shadow: #000000;
+    --color-scrim: #000000;
+    --color-inverse-surface: #322F35;
+    --color-inverse-on-surface: #F5EFF7;
+    --color-inverse-primary: #D3BCFD;
+    --color-primary-fixed: #EBDDFF;
+    --color-on-primary-fixed: #230F46;
+    --color-primary-fixed-dim: #D3BCFD;
+    --color-on-primary-fixed-variant: #4F3D74;
+    --color-secondary-fixed: #E9DEF8;
+    --color-on-secondary-fixed: #1F182B;
+    --color-secondary-fixed-dim: #CDC2DB;
+    --color-on-secondary-fixed-variant: #4B4358;
+    --color-tertiary-fixed: #FFD9E1;
+    --color-on-tertiary-fixed: #31101B;
+    --color-tertiary-fixed-dim: #F0B7C5;
+    --color-on-tertiary-fixed-variant: #643B46;
+    --color-surface-dim: #DED8E0;
+    --color-surface-bright: #FEF7FF;
+    --color-surface-container-lowest: #FFFFFF;
+    --color-surface-container-low: #F8F1FA;
+    --color-surface-container: #F2ECF4;
+    --color-surface-container-high: #EDE6EE;
+    --color-surface-container-highest: #E7E0E8;
+  }
+  
+  /* @plugin "tailwindcss-radix"; */
