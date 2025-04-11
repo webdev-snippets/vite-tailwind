@@ -18,7 +18,7 @@ const textInput = cva("textInput rounded-2xl  text-nowrap", {
         },
         disabled: {
             false: null,
-            true: ["opacity-80", "cursor-not-allowed",  "!text-on-surface", "border-gray-400", "!bg-gray-500"],
+            true: ["opacity-80", "cursor-not-allowed", "!text-on-surface", "border-gray-400", "!bg-gray-500"],
         },
 
     },
@@ -31,12 +31,12 @@ const textInput = cva("textInput rounded-2xl  text-nowrap", {
 
 
 export interface TextInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"|"disabled"|"size">,
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type" | "disabled" | "size">,
     VariantProps<typeof textInput> {
-  label?: string;
-  className?: string;
-  type?: "text"| "email" | "password"
-  required: boolean
+    label?: string;
+    className?: string;
+    type?: "text" | "email" | "password"
+    required?: boolean
 }
 
 
@@ -51,22 +51,22 @@ export const TextInput: React.FC<TextInputProps> = ({
     ...props
 }) => (
     <>
-    <div className="flex flex-col bg-surface-container-low rounded-lg p-2">
-    <label className={"text-bold text-on-surface"} id={label + 'label'} htmlFor={label + 'input'}>{label}</label>
-    <div className="flex flex-row items-center">
+        <div className="flex flex-col bg-surface-container-low rounded-lg p-2">
+            <label className={"text-bold text-on-surface"} id={label + 'label'} htmlFor={label + 'input'}>{label}</label>
+            <div className="flex flex-row items-center">
 
-    <input
-    id={label + 'input'}
-    type={type}
-    aria-labelledby={label + 'label'}
-    className={textInput({ action, size, disabled, className, })}
-    disabled={disabled || undefined}
-    {...props}
-    />
-        {
-            required && <AsteriskIcon />
-        }
-        </div>
+                <input
+                    id={label + 'input'}
+                    type={type}
+                    aria-labelledby={label + 'label'}
+                    className={textInput({ action, size, disabled, className, })}
+                    disabled={disabled || undefined}
+                    {...props}
+                />
+                {
+                    required && <AsteriskIcon role="img"/>
+                }
+            </div>
         </div>
     </>
 );

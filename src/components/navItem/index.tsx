@@ -34,7 +34,7 @@ export interface NavItemProps extends VariantProps<typeof navItemContainer> {
 export function NavItem({ label, icon: Icon, action, size, active }: NavItemProps) {
   return (
     <div className={cx(navItemContainer({ action, size, active }), "shrink-0")}>
-      { Icon && <Icon className="w-5 h-5" /> }
+      { Icon && <Icon role='img' className="w-5 h-5" /> }
      <span className="hidden sm:inline">{label}</span>
     </div>
   );
