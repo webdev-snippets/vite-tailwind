@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { useToken } from '@/context/authContext'; // Adjust the import path as necessary
 
 const useAxios = (): AxiosInstance => {
@@ -14,6 +14,16 @@ const useAxios = (): AxiosInstance => {
         } else {
             delete instance.defaults.headers.common['Authorization'];
         }
+
+
+        instance.interceptors.response.use(
+            (response: AxiosResponse) => response,
+            (error: AxiosError) => {
+                console.log(error.toJSON());
+                return Promise.reject(error);
+            }
+        );
+
         return instance;
     }, [token]); // Only recreate axios instance when the token changes
     return axiosInstance;

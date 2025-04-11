@@ -42,7 +42,7 @@ export function RadioGroup({ radioItems, ...props }: RadioGroupProps) {
                             <RadioGroupPrimitive.Item id={_.id} key={_.id} value={_.value} className={cx("","size-6")} >
                                 <RadioGroupPrimitive.Indicator key={_.id} className=" flex size-3 rounded-full  bg-black" />
                             </RadioGroupPrimitive.Item>
-                            <label key={_.id} htmlFor={_.id}>
+                            <label key={_.id + '-label'} htmlFor={_.id}>
                                 {_.value}
                             </label>
                         </div>
