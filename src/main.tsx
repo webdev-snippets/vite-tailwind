@@ -7,7 +7,7 @@ import { TokenProvider } from './context/authContext'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <TokenProvider>
-    <div className='bg-surface'>
+    <div className='bg-surface min-h-screen flex flex-col'>
     <App />
     </div>
     </TokenProvider>

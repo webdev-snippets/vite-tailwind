@@ -66,7 +66,7 @@ export function Card({ action, tags, title, size, price, elevated, className, im
             </div>
             <div className="flex-row flex gap-1">
             <div className={card({action, size})}>
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-2 text-wrap max-w-80">
 
                 {children}
                 {

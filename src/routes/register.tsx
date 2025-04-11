@@ -56,22 +56,22 @@ const onSubmit = async (data: LoginSchemaType) => {
             if (axiosError.response) {
                 switch (axiosError.response.status) {
                     case 400:
-                        alert('Invalid request data. Please check your input.');
+                        console.error('Invalid request data. Please check your input.');
                         break;
                     case 401:
-                        alert('Unauthorized. Please check your credentials.');
+                        console.error('Unauthorized. Please check your credentials.');
                         break;
                     case 500:
-                        alert('Server error. Please try again later.');
+                        console.error('Server error. Please try again later.');
                         break;
                     default:
-                        alert('An unexpected error occurred.');
+                        console.error('An unexpected error occurred.');
                 }
             }
         } else {
             // Handle non-axios errors (e.g., network issues, etc.)
             console.error('Unexpected error:', error);
-            alert('An unexpected error occurred. Please try again later.');
+            console.error('An unexpected error occurred. Please try again later.');
         }
     }
 };
@@ -83,7 +83,7 @@ const onSubmit = async (data: LoginSchemaType) => {
                 {
                     errors.username && <span>{errors.username?.message}</span>
                 }
-                <TextInput required label='email' action={errors.username ? 'error' : 'primary'} {...register('email', { required: true })} />
+                <TextInput required label='email' action={errors.username ? 'error' : 'tertiary'} {...register('email', { required: true })} />
                 {
                     errors.email && <span>{errors.email?.message}</span>
                 }

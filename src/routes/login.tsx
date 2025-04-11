@@ -84,6 +84,10 @@ const onSubmit = async (data: LoginSchemaType) => {
 
     return (
         <>
+        <div className="bg-surface-container-high text-on-surface rounded-md p-2 m-2">
+            <h1 className="text-lg text-semibold">Login</h1>
+            <h2>login to access bookings and user management</h2>
+        </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <TextInput required label='username' action={errors.username ? 'error' : 'primary'} {...register('username', { required: true })} />
                 {
@@ -94,7 +98,6 @@ const onSubmit = async (data: LoginSchemaType) => {
                 {
                     errors.password && <span>{errors.password?.message}</span>
                 }
-
                 <Button type='submit' label="Login" />
             </form>
         </>
