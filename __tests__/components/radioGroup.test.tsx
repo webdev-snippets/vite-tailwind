@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { RadioGroup, RadioItemProps } from "./";
+import { RadioGroup, RadioItemProps } from "@/components/radioGroup";
 
 describe("RadioGroup", () => {
     const items: RadioItemProps[] = [

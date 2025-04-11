@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { TextInput, type TextInputProps } from "./"; // adjust import if needed
+import { TextInput, type TextInputProps } from "@/components/textInput"; // adjust import if needed
 
 describe("TextInput component", () => {
   const baseProps: TextInputProps = {

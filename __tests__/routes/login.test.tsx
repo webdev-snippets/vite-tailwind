@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import LoginPage from './login';
+import LoginPage from '@/routes/login';
 import useApi from '@/hooks/useApi';
 import { Token } from '@/types/backend';
 import axios from 'axios';

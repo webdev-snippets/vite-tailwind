@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import App from "./App";
+import { render, screen, fireEvent, waitFor, cleanup } from "@testing-library/react";
+import App from "@/App";
 
 
 interface ItemProps {route: string, label: string}
 // Mock components
-vi.mock("./components/navDrawer", () => ({
+vi.mock("@/components/navDrawer", () => ({
   NavDrawer: ({ children, items, onItemClick }: {children: React.ReactNode, items: ItemProps[], onItemClick: (item: ItemProps ) => void}) => (
     <div data-testid="nav-drawer">
       {items.map((item: ItemProps) => (
@@ -23,8 +23,8 @@ vi.mock("./components/navDrawer", () => ({
   ),
 }));
 
-vi.mock("./components/button", () => ({
-  Button: ({ label }: {label: string}) => <button type="button">{label}</button>,
+vi.mock("@/components/button", () => ({
+  Button: ({ label }: {label: string}) => <button role='button' type="button">{label}</button>,
 }));
 
 // Mock dynamic imports
@@ -48,9 +48,12 @@ vi.mock("@/routes/notFound.tsx", () => ({
   default: () => <div data-testid="not-found-page">404 Not Found</div>,
 }));
 
+vi.spyOn(console, 'error').mockImplementation(vi.fn())
+
 describe("App component", () => {
   beforeEach(() => {
     window.history.pushState({}, "", "/"); // Start at home
+    cleanup()
   });
 
   afterEach(() => {
@@ -60,7 +63,8 @@ describe("App component", () => {
 
   it("renders base UI correctly", async () => {
     render(<App />);
-    expect(screen.getByText("Rosla Technologies")).toBeInTheDocument();
+    expect(screen.getAllByText("Rosla Technologies")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("Rosla Technologies")[1]).toBeInTheDocument();
     expect(
       screen.getByText("We are a green energy company focused on sustainability")
     ).toBeInTheDocument();
@@ -70,9 +74,10 @@ describe("App component", () => {
     );
   });
 
-  it("renders footer", () => {
+  it("renders footer", async () => {
     render(<App />);
-    expect(screen.getByText("this is the footer")).toBeInTheDocument();
+     
+    await waitFor(() => expect(screen.getByText("This is the footer")).toBeInTheDocument()) //@TODO update footer at some point
   });
 
   it("navigates to /status and loads the status page", async () => {
@@ -96,6 +101,7 @@ describe("App component", () => {
     await waitFor(() =>
       expect(screen.getByTestId("not-found-page")).toBeInTheDocument()
     );
+    await waitFor(() => expect(console.error).toHaveBeenCalledOnce()) 
   });
 
   it("updates page on browser back button (popstate)", async () => {

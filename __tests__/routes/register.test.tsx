@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import RegisterPage from './register'; 
+import RegisterPage from '@/routes/register'; 
 import useApi from '@/hooks/useApi';
 import { User } from '@/types/backend';
 import axios from 'axios';
@@ -91,7 +91,7 @@ describe('RegisterPage', () => {
       message: 'Bad Request'
     });
 
-    const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {});
+    const errorMock = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     render(<RegisterPage />);
 
@@ -103,9 +103,8 @@ describe('RegisterPage', () => {
 
     await waitFor(() => {
       expect(postMock).toHaveBeenCalled();
-      expect(alertMock).toHaveBeenCalledWith('Invalid request data. Please check your input.');
+      expect(errorMock).toHaveBeenCalledWith('Invalid request data. Please check your input.');
     });
 
-    alertMock.mockRestore();
   });
 });

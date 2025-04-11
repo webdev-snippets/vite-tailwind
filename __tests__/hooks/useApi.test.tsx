@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import axios from 'axios';
-import useAxios from './useApi'; // Adjust to your actual path
+import useAxios from '@/hooks/useApi'; // Adjust to your actual path
 
 // Import Token type and mock the context
 import { Token } from '@/types/backend';

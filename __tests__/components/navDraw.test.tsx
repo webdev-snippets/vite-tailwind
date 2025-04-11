@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { NavDrawer} from "./";
+import { NavDrawer} from "@/components/navDrawer";
 
 // Mock NavItem so we don’t need to test its internals
 vi.mock("@/components/navItem", () => ({

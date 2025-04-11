@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { Tag, type TagProps } from "./"; // adjust the path if needed
+import { Tag, type TagProps } from "@/components/tags"; // adjust the path if needed
 
 describe("Tag component", () => {
   const baseTag: TagProps = {

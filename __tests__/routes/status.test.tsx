@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import StatusPage from './status'; // adjust as needed
+import StatusPage from '@/routes/status'; // adjust as needed
 import useApi from '@/hooks/useApi';
 import { Health } from '@/types/backend';
 import axios from 'axios';
@@ -27,6 +27,10 @@ describe('StatusPage', () => {
     realAxiosInstance.get = getMock;
 
     vi.mocked(useApi).mockReturnValue(realAxiosInstance);
+  });
+  afterEach(() => {
+    vi.resetModules();
+    vi.resetAllMocks()
   });
 
   it('fetches and displays initial health status from the API', async () => {
