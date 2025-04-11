@@ -7,6 +7,10 @@ describe("Button", () => {
   beforeEach(() => {
     cleanup();
   });
+  afterEach(() => {
+    vi.resetModules();
+    vi.resetAllMocks()
+  });
 
   it("renders with default props", () => {
     render(<Button label="Click me" />);

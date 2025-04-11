@@ -33,6 +33,10 @@ describe('LoginPage', () => {
     vi.mocked(useApi).mockReturnValue(realAxiosInstance);
     vi.mocked(useToken).mockReturnValue(mockTokenContext);
   });
+  afterEach(() => {
+    vi.resetModules();
+    vi.resetAllMocks()
+  });
   
   it('submits login form with correct values and calls setToken', async () => {
     render(<LoginPage />);

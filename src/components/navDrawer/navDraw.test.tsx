@@ -22,6 +22,10 @@ describe("NavDrawer", () => {
   beforeEach(() => {
     cleanup();
   });
+  afterEach(() => {
+    vi.resetModules();
+    vi.resetAllMocks()
+  });
 
   it("renders nav items", () => {
     render(

@@ -14,6 +14,10 @@ describe("Card", () => {
   beforeEach(() => {
     cleanup();
   });
+  afterEach(() => {
+    vi.resetModules();
+    vi.resetAllMocks()
+  });
 
   it("renders title, tags, price and children", () => {
     render(<Card {...baseProps} />);

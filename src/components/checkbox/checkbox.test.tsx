@@ -7,6 +7,10 @@ describe("Checkbox", () => {
   beforeEach(() => {
     cleanup();
   });
+  afterEach(() => {
+    vi.resetModules();
+    vi.resetAllMocks()
+  });
 
   it("renders with label", () => {
     render(<Checkbox label="Accept terms" />);

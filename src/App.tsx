@@ -1,13 +1,13 @@
 import { CatIcon, HomeIcon, LeafyGreenIcon, LockKeyholeIcon } from "lucide-react";
 import { NavItemProps } from "./components/navItem";
-import StatusPage from "./routes/status";
 import { NavDrawer } from "./components/navDrawer";
 import { Button } from "./components/button";
-import ProductPage from "./routes/products";
-import LoginPage from "./routes/login";
+import { useState, useEffect, Suspense } from "react";
 
 
 export default function App() {
+    const [currentPath, setCurrentPath] = useState(window.location.pathname)
+    const [PageComponent, setPageComponent] = useState<React.ComponentType | null>(null)
     const navItems: NavItemProps[] = [
         {
             label: "home",
@@ -34,11 +34,46 @@ export default function App() {
             icon: LeafyGreenIcon
         }
     ]
+
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname)
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const handleNav = (item: NavItemProps) => {
+    const route = item.route
+    if (route !== window.location.pathname) {
+      history.pushState({}, '', route)
+      setCurrentPath(route)
+    }
+  }
+
+  useEffect(() => {
+    // convert route to component path
+    const loadPage = async () => {
+      const routeName = currentPath === '/' ? 'home' : currentPath.slice(1)
+      try {
+        const module = await import(`@/routes/${routeName}.tsx`)
+        setPageComponent(() => module.default)
+      } catch (e) {
+        console.error('Page not found:', routeName, e)
+        const NotFound = await import(`@/routes/notFound.tsx`)
+        setPageComponent(() => NotFound.default)
+      }
+    }
+
+    loadPage()
+  }, [currentPath])
     return(
         <>
         <div className="bg-surface-container-low rounded-md flex-row flex m-1 p-2 gap-3">
             <div>
-                <NavDrawer pathname={location.pathname} items={navItems} >
+                <NavDrawer pathname={location.pathname} items={navItems} onItemClick={handleNav}>
                     <Button label='navigation' /> 
                 </NavDrawer>
             </div>
@@ -49,7 +84,9 @@ export default function App() {
                 <h2>We are a green energy company focused on sustainability</h2>
             </div>
         </div>
-            <LoginPage />
+        <Suspense fallback={<div>Loading...</div>}>
+          {PageComponent && <PageComponent />}
+        </Suspense>
         <div>
             <div className="bg-tertiary-container text-on-tertiary-container flex flex-row mt-3 p-2">
                 <div className="bg-tertiary text-on-tertiary rounded-md p-2 m-3">
