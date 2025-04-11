@@ -1,4 +1,4 @@
-import { CatIcon, HomeIcon } from "lucide-react";
+import { CatIcon, HomeIcon, LeafyGreenIcon, LockKeyholeIcon } from "lucide-react";
 import { NavItemProps } from "./components/navItem";
 import StatusPage from "./routes/status";
 import { NavDrawer } from "./components/navDrawer";
@@ -18,8 +18,20 @@ export default function App() {
         {
             label: "status",
             route: "/status",
-            action: 'secondary',
+            action: 'tertiary',
             icon: CatIcon
+        },
+        {
+            label: "login",
+            route: "/login",
+            action: 'primary',
+            icon: LockKeyholeIcon
+        },
+        {
+            label: 'products',
+            route: '/products',
+            action: 'secondary',
+            icon: LeafyGreenIcon
         }
     ]
     return(
@@ -40,7 +52,7 @@ export default function App() {
             <LoginPage />
         <div>
             <div className="bg-tertiary-container text-on-tertiary-container flex flex-row mt-3 p-2">
-                <div className="bg-tertiary text-on-tertiary">
+                <div className="bg-tertiary text-on-tertiary rounded-md p-2 m-3">
                     <h1>
                         this is the footer
                     </h1>

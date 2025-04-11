@@ -14,7 +14,7 @@ export interface NavDrawerProps {
 }
 
 export function NavDrawer({ items, onItemClick, open, onOpenChange, children, pathname, ...props }: NavDrawerProps) {
-  console.log(pathname)
+  // console.log(pathname)
   return (
     <Drawer.Root direction="left" open={open} onOpenChange={onOpenChange} {...props}>
       <Drawer.Trigger asChild >

@@ -40,7 +40,7 @@ const onSubmit = async (data: LoginSchemaType) => {
         scope: 'user user:write booking booking:write'
     };
 
-    console.log(newData);
+    // console.log(newData);
 
     try {
         const response = await api.post<Token>("/auth/token", newData, {
