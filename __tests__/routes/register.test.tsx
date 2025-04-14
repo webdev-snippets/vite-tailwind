@@ -37,7 +37,7 @@ describe('RegisterPage', () => {
     await userEvent.type(screen.getByLabelText(/email/i), 'newuser@example.com');
     await userEvent.type(screen.getByLabelText(/password/i), 'verysecure123');
 
-    await userEvent.click(screen.getByRole('button', { name: /login/i }));
+    await userEvent.click(screen.getByRole('button', { name: /Register/i }));
 
     await waitFor(() => {
       expect(postMock).toHaveBeenCalledWith(
@@ -64,7 +64,7 @@ describe('RegisterPage', () => {
     await userEvent.type(screen.getByLabelText(/email/i), 'notanemail');
     await userEvent.type(screen.getByLabelText(/password/i), '123');
 
-    await userEvent.click(screen.getByRole('button', { name: /login/i }));
+    await userEvent.click(screen.getByRole('button', { name: /Register/i }));
 
     expect(await screen.findByText(/invalid email/i)).toBeInTheDocument();
     expect(await screen.findByText(/at least 8 character/i)).toBeInTheDocument();
@@ -76,7 +76,7 @@ describe('RegisterPage', () => {
   it('shows required field errors when all fields are empty', async () => {
     render(<RegisterPage />);
 
-    await userEvent.click(screen.getByRole('button', { name: /login/i }));
+    await userEvent.click(screen.getByRole('button', { name: /Register/i }));
 
     expect(await screen.findAllByText(/must contain at least 1 character/i)).toHaveLength(2);
     expect(await screen.findByText(/invalid email/i)).toBeInTheDocument();
@@ -99,10 +99,10 @@ describe('RegisterPage', () => {
     await userEvent.type(screen.getByLabelText(/email/i), 'baduser@example.com');
     await userEvent.type(screen.getByLabelText(/password/i), 'badpassword');
 
-    await userEvent.click(screen.getByRole('button', { name: /login/i }));
+    await userEvent.click(screen.getByRole('button', { name: /Register/i }));
 
     await waitFor(() => {
-      expect(postMock).toHaveBeenCalled();
+      expect(postMock).toHaveBeenCalledWith('/user', expect.anything(), expect.anything());
       expect(errorMock).toHaveBeenCalledWith('Invalid request data. Please check your input.');
     });
 

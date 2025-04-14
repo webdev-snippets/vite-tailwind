@@ -7,6 +7,7 @@ Object.defineProperty(HTMLElement.prototype, 'setPointerCapture', {
 Object.defineProperty(HTMLElement.prototype, 'releasePointerCapture', {
     value: () => { },
 });
+window.HTMLElement.prototype.hasPointerCapture = vi.fn();
 
 // Avoid transform.match errors from vaul
 // const originalGetComputedStyle = window.getComputedStyle;
