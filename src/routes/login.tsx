@@ -94,7 +94,7 @@ const onSubmit = async (data: LoginSchemaType) => {
                     errors.username && <span>{errors.username?.message}</span>
                 }
 
-                <TextInput required label='password' type="password" action={errors.username ? 'error' : 'primary'} {...register('password', {required: true})} />
+                <TextInput required label='password' type="password" action={errors.password ? 'error' : 'primary'} {...register('password', {required: true})} />
                 {
                     errors.password && <span>{errors.password?.message}</span>
                 }

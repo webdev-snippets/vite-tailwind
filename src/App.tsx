@@ -1,4 +1,4 @@
-import { CatIcon, HomeIcon, LeafyGreenIcon, LockKeyholeIcon } from "lucide-react";
+import { BookIcon, CatIcon, HomeIcon, LeafyGreenIcon, LockKeyholeIcon } from "lucide-react";
 import { NavItemProps } from "@/components/navItem";
 import { NavDrawer } from "@/components/navDrawer";
 import { Button } from "@/components/button";
@@ -32,6 +32,12 @@ export default function App() {
       route: '/products',
       action: 'secondary',
       icon: LeafyGreenIcon
+    },
+    {
+      label: 'booking',
+      route: '/booking',
+      action: 'primary',
+      icon: BookIcon
     }
   ]
 

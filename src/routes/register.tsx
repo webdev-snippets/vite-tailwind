@@ -93,7 +93,7 @@ const onSubmit = async (data: LoginSchemaType) => {
                     errors.password && <span>{errors.password?.message}</span>
                 }
 
-                <Button type='submit' label="Login" />
+                <Button type='submit' label="Register" />
             </form>
 
             {

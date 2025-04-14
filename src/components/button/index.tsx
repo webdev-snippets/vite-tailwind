@@ -70,6 +70,8 @@ export function Button({
         <>
             <button
                 type={type}
+                role='button'
+                aria-label={label}
                 className={button({ action, size, disabled, className, outline })}
                 disabled={disabled || undefined}
                 {...props}

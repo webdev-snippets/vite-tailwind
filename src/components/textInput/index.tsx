@@ -58,6 +58,7 @@ export const TextInput: React.FC<TextInputProps> = ({
                 <input
                     id={label + 'input'}
                     type={type}
+                    role='textbox'
                     aria-labelledby={label + 'label'}
                     className={textInput({ action, size, disabled, className, })}
                     disabled={disabled || undefined}
