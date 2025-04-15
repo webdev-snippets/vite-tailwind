@@ -62,4 +62,4 @@ body {
     --color-surface-container-highest: #E7E0E8;
   }
   
-  @plugin "tailwindcss-radix";
+@plugin "tailwindcss-radix";

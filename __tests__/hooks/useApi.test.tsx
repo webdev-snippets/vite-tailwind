@@ -1,15 +1,13 @@
 import { renderHook } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import axios from 'axios';
-import useAxios from '@/hooks/useApi'; // Adjust to your actual path
+import useAxios from '@/hooks/useApi'; 
 
-// Import Token type and mock the context
 import { Token } from '@/types/backend';
 import * as AuthContext from '@/context/authContext';
 
 vi.mock('@/context/authContext');
 
-// Make sure axios.create is spy-able (optional)
 vi.spyOn(axios, 'create');
 
 describe('useAxios hook', () => {

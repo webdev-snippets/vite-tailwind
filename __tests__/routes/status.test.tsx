@@ -22,7 +22,6 @@ describe('StatusPage', () => {
   beforeEach(() => {
     getMock = vi.fn().mockResolvedValue({ data: initialMockHealth });
 
-    // Use actual Axios instance and override only the get method
     const realAxiosInstance = axios.create();
     realAxiosInstance.get = getMock;
 

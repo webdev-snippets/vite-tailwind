@@ -1,4 +1,4 @@
-import { BookIcon, CatIcon, HomeIcon, LeafyGreenIcon, LockKeyholeIcon } from "lucide-react";
+import { BookIcon, CatIcon, ClipboardIcon, HomeIcon, LeafyGreenIcon, LockKeyholeIcon } from "lucide-react";
 import { NavItemProps } from "@/components/navItem";
 import { NavDrawer } from "@/components/navDrawer";
 import { Button } from "@/components/button";
@@ -26,6 +26,13 @@ export default function App() {
       route: "/login",
       action: 'primary',
       icon: LockKeyholeIcon
+    },
+    {
+      label: 'register',
+      route: '/register',
+      action: 'tertiary',
+      icon: ClipboardIcon
+
     },
     {
       label: 'products',
@@ -60,7 +67,6 @@ export default function App() {
   }
 
   useEffect(() => {
-    // convert route to component path
     const loadPage = async () => {
       const routeName = currentPath === '/' ? 'home' : currentPath.slice(1)
       try {

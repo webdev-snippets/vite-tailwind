@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import ProductPage from '@/routes/products'; // adjust the path if needed
+import ProductPage from '@/routes/products';
 import { vi } from 'vitest';
 import { Product } from '@/types/backend';
 import axios from 'axios';
@@ -23,7 +23,6 @@ describe('ProductPage', () => {
     beforeEach(() => {
         getMock = vi.fn().mockResolvedValue({ data: MockProduct });
 
-        // Use actual Axios instance and override only the get method
         const realAxiosInstance = axios.create();
         realAxiosInstance.get = getMock;
 
@@ -47,7 +46,6 @@ describe('ProductPage', () => {
     });
 
     it('shows fallback data on initial load', async () => {
-        // overwrite mock to delay resolving the fetch
         const useApi = (await import('@/hooks/useApi')).default;
         vi.spyOn(useApi(), 'get').mockImplementationOnce(() => new Promise(() => { })); // hangs forever
 

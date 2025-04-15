@@ -99,7 +99,5 @@ describe('LoginPage', () => {
     await waitFor(() => {
       expect(postMock).toHaveBeenCalled();
     });
-
-    // Optionally check for an error UI message once the component handles it
   });
 });

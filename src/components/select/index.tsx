@@ -42,11 +42,9 @@ export function Select({ selectItems, children, ...props }: SelectProps) {
                 <SelectPrimitive.Trigger asChild>
                     {children} 
                 </SelectPrimitive.Trigger>
-                {/* <SelectPrimitive.Portal > */}
                     <SelectPrimitive.Content >
                         <SelectPrimitive.Viewport>
                             {selectItems.map((_) => {
-                                // console.log(_.value)
                                 return (
                                     <div key={_.value}  className={cx(selectitem({ action: _.action, disabled: props.disabled }), "items-center gap-2 border-2 rounded-full p-2")}>
                                         <SelectPrimitive.Item id={_.value} key={_.value + '-item'} value={_.value} className={selectitem({action: _.action, disabled:  _.disabled})} >
@@ -66,7 +64,6 @@ export function Select({ selectItems, children, ...props }: SelectProps) {
                             })}
                         </SelectPrimitive.Viewport>
                     </SelectPrimitive.Content>
-                {/* </SelectPrimitive.Portal> */}
             </SelectPrimitive.Root>
         </>
     )

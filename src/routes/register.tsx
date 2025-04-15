@@ -46,13 +46,10 @@ const onSubmit = async (data: LoginSchemaType) => {
 
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            // AxiosError specific handling
             const axiosError = error as AxiosError;
             
-            // Log the error response or message
             console.error('API request failed:', axiosError.response?.data || axiosError.message);
 
-            // Handle specific cases like 401 (unauthorized), 400 (bad request), etc.
             if (axiosError.response) {
                 switch (axiosError.response.status) {
                     case 400:
@@ -78,6 +75,10 @@ const onSubmit = async (data: LoginSchemaType) => {
 
     return (
         <>
+        <div className="bg-surface-container-highest text-on-surface shadow shadow-shadow text-lg">
+            <h1 className="bg-primary-container m-1 p-1">Register</h1>
+            <p className="bg-tertiary-container  m-1 p-2">Register a new user to ue our installation and consulation services</p>
+        </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <TextInput required label='username' action={errors.username ? 'error' : 'primary'} {...register('username', { required: true })} />
                 {

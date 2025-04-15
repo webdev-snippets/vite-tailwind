@@ -27,7 +27,6 @@ vi.mock("@/components/button", () => ({
   Button: ({ label }: {label: string}) => <button role='button' type="button">{label}</button>,
 }));
 
-// Mock dynamic imports
 vi.mock("@/routes/home.tsx", () => ({
   default: () => <div data-testid="home-page">Home Page</div>,
 }));

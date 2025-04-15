@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-import { useToken } from '@/context/authContext'; // Adjust the import path as necessary
+import { useToken } from '@/context/authContext'; 
 
 const useAxios = (): AxiosInstance => {
     const { token } = useToken();
 
     const axiosInstance = useMemo(() => {
         const instance = axios.create({
-            baseURL: 'http://127.0.0.1:8000', // Replace with your API base URL
+            baseURL: 'http://127.0.0.1:8000',
         });
         if (token) {
             instance.defaults.headers.common['Authorization'] = `${token.token_type} ${token.access_token}`;
@@ -25,7 +25,7 @@ const useAxios = (): AxiosInstance => {
         );
 
         return instance;
-    }, [token]); // Only recreate axios instance when the token changes
+    }, [token]); 
     return axiosInstance;
 };
 export default useAxios;

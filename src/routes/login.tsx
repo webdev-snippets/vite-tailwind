@@ -40,7 +40,6 @@ const onSubmit = async (data: LoginSchemaType) => {
         scope: 'user user:write booking booking:write'
     };
 
-    // console.log(newData);
 
     try {
         const response = await api.post<Token>("/auth/token", newData, {
@@ -75,7 +74,7 @@ const onSubmit = async (data: LoginSchemaType) => {
                 }
             }
         } else {
-            // Handle non-axios errors (e.g., network issues, etc.)
+
             console.error('Unexpected error:', error);
             console.error('An unexpected error occurred. Please try again later.');
         }

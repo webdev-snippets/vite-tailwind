@@ -3,7 +3,6 @@ import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NavDrawer} from "@/components/navDrawer";
 
-// Mock NavItem so we don’t need to test its internals
 vi.mock("@/components/navItem", () => ({
   NavItem: ({ label, active }: { label: string; active?: boolean }) => (
     <div data-testid="nav-item">{label}{active ? " (active)" : ""}</div>
@@ -73,7 +72,6 @@ describe("NavDrawer", () => {
     const trigger = screen.getByRole("button", { name: "Trigger" });
     await user.click(trigger);
 
-    // `vaul` handles internal state, but for controlled components, onOpenChange should fire
     expect(onOpenChange).toHaveBeenCalledWith(true);
   });
 

@@ -38,8 +38,6 @@ describe("Select component", () => {
     await user.click(screen.getByText("Choose option"));
     await user.click(screen.getByText("Second"));
 
-    // This only verifies the option was selected if you expose value or visual change.
-    // Add a selected value output (e.g. below button) in your component for better testability.
   });
 
   it("prevents clicking on disabled item", async () => {

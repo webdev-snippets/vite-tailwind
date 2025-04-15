@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { TokenProvider, useToken } from '@/context/authContext'; // Adjust the import path as necessary
-import { Token } from '@/types/backend'; // Adjust the import path as necessary
+import { TokenProvider, useToken } from '@/context/authContext'; 
+import { Token } from '@/types/backend'; 
 
-// Mock component to use the Token context
 const MockComponent = () => {
     const { token, setToken, clearToken } = useToken();
 
