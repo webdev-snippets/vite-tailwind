@@ -48,10 +48,8 @@ export default function BookingPage() {
                 // AxiosError specific handling
                 const axiosError = error as AxiosError;
 
-                // Log the error response or message
                 console.error('API request failed:', axiosError.response?.data || axiosError.message);
 
-                // Handle specific cases like 401 (unauthorized), 400 (bad request), etc.
                 if (axiosError.response) {
                     switch (axiosError.response.status) {
                         case 400:
@@ -68,7 +66,6 @@ export default function BookingPage() {
                     }
                 }
             } else {
-                // Handle non-axios errors (e.g., network issues, etc.)
                 console.error('Unexpected error:', error);
                 console.error('An unexpected error occurred. Please try again later.');
             }
